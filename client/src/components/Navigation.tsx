@@ -12,7 +12,7 @@ export default function Navigation() {
         <Link href="/">
           <a className="flex items-center gap-2 font-bold text-xl hover:opacity-80 transition-opacity">
             <span className="text-2xl">🎓</span>
-            <span>DevLearn Hub</span>
+            <span>DEV-KIT</span>
           </a>
         </Link>
 
