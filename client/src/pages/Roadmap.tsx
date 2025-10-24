@@ -5,9 +5,139 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { studyPlans } from "@/lib/resourcesData";
 import { CheckCircle2, Circle } from "lucide-react";
+import InteractiveRoadmap from "@/components/InteractiveRoadmap";
 
 export default function Roadmap() {
   const [activeTab, setActiveTab] = useState("fullstack");
+
+  const interactiveRoadmapData = [
+    {
+      title: "Full-Stack Development",
+      color: "bg-blue-600",
+      bgColor: "bg-blue-100 dark:bg-blue-900",
+      nodes: [
+        {
+          id: "fs-1",
+          title: "HTML Basics",
+          status: "completed" as const,
+          description: "Learn HTML fundamentals, semantic markup, and document structure",
+          icon: "📄"
+        },
+        {
+          id: "fs-2",
+          title: "CSS Fundamentals",
+          status: "completed" as const,
+          description: "Master CSS selectors, box model, Flexbox, and Grid layouts",
+          icon: "🎨"
+        },
+        {
+          id: "fs-3",
+          title: "JavaScript Basics",
+          status: "in-progress" as const,
+          description: "Learn variables, functions, DOM manipulation, and async programming",
+          icon: "⚡"
+        },
+        {
+          id: "fs-4",
+          title: "React.js",
+          status: "available" as const,
+          description: "Master components, hooks, state management, and routing",
+          icon: "⚛️"
+        },
+        {
+          id: "fs-5",
+          title: "Node.js & Express",
+          status: "locked" as const,
+          description: "Learn server-side JavaScript, APIs, and middleware",
+          icon: "🖥️"
+        }
+      ]
+    },
+    {
+      title: "DevOps",
+      color: "bg-green-600",
+      bgColor: "bg-green-100 dark:bg-green-900",
+      nodes: [
+        {
+          id: "do-1",
+          title: "Linux Basics",
+          status: "available" as const,
+          description: "Learn Linux fundamentals, shell commands, and system administration",
+          icon: "🐧"
+        },
+        {
+          id: "do-2",
+          title: "Git & Version Control",
+          status: "available" as const,
+          description: "Master Git workflows, branching, and collaborative development",
+          icon: "🔀"
+        },
+        {
+          id: "do-3",
+          title: "Docker",
+          status: "locked" as const,
+          description: "Learn containerization, Docker Compose, and image management",
+          icon: "🐳"
+        },
+        {
+          id: "do-4",
+          title: "CI/CD Pipelines",
+          status: "locked" as const,
+          description: "Implement Jenkins, GitHub Actions, and automated testing",
+          icon: "🔄"
+        },
+        {
+          id: "do-5",
+          title: "Kubernetes",
+          status: "locked" as const,
+          description: "Master container orchestration, deployments, and scaling",
+          icon: "☸️"
+        }
+      ]
+    },
+    {
+      title: "AI/ML",
+      color: "bg-purple-600",
+      bgColor: "bg-purple-100 dark:bg-purple-900",
+      nodes: [
+        {
+          id: "ml-1",
+          title: "Python Basics",
+          status: "available" as const,
+          description: "Learn Python fundamentals for data science and ML",
+          icon: "🐍"
+        },
+        {
+          id: "ml-2",
+          title: "Data Science",
+          status: "available" as const,
+          description: "Master NumPy, Pandas, and data visualization",
+          icon: "📊"
+        },
+        {
+          id: "ml-3",
+          title: "Machine Learning",
+          status: "locked" as const,
+          description: "Learn supervised/unsupervised learning and model evaluation",
+          icon: "🤖"
+        },
+        {
+          id: "ml-4",
+          title: "Deep Learning",
+          status: "locked" as const,
+          description: "Master neural networks, TensorFlow, and PyTorch",
+          icon: "🧠"
+        },
+        {
+          id: "ml-5",
+          title: "Advanced AI",
+          status: "locked" as const,
+          description: "Explore LLMs, transformers, and cutting-edge AI techniques",
+          icon: "✨"
+        }
+      ]
+    }
+  ];
 
   const roadmapItems = {
     fullstack: [
@@ -86,6 +216,17 @@ export default function Roadmap() {
               Follow a structured path to master Full-Stack Development, DevOps, and AI/ML
             </p>
           </div>
+
+          {/* Interactive Visual Roadmap */}
+          <Card className="mb-12 p-8">
+            <CardHeader className="pb-8">
+              <CardTitle className="text-2xl">Interactive Learning Roadmap</CardTitle>
+              <CardDescription>Click on any node to see details and unlock new topics</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <InteractiveRoadmap tracks={interactiveRoadmapData} />
+            </CardContent>
+          </Card>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-8">
