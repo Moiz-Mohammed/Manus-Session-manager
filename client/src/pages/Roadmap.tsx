@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { trpc } from "@/lib/trpc";
 import Navigation from "@/components/Navigation";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { studyPlans } from "@/lib/resourcesData";
-import { CheckCircle2, Circle } from "lucide-react";
+import { CheckCircle2, Circle, Loader2 } from "lucide-react";
 import InteractiveRoadmap from "@/components/InteractiveRoadmap";
+import ProgressManager from "@/components/ProgressManager";
 
 export default function Roadmap() {
   const [activeTab, setActiveTab] = useState("fullstack");
